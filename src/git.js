@@ -127,7 +127,7 @@
      * @param {string} localPath
      * @param {Function} [then]
      */
-    Git.prototype.clone = function (repoPath, localPath, then) {
+    Git.clone = function (repoPath, localPath, then) {
         return this._run(['clone', repoPath, localPath], function (err) {
             then && then(err);
         });
