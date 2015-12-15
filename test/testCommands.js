@@ -470,7 +470,10 @@ exports.branch = {
             test.done();
         });
 
-        closeWith('master')
+        closeWith('' +
+            'develop' +
+            '* vayu/browser-refactor' +
+            '')
     }
 
 };

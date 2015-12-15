@@ -116,7 +116,6 @@
      */
     Git.prototype.getAllBranches = function (then) {
         return this._run(['branch', '-a'], function (err, data) {
-            console.log('data', data);
             then && then(err, !err && this._parseBranch(data));
         });
     };
@@ -810,8 +809,25 @@
         };
     };
     
-    Git.prototype._parseBranch = function (branch) {
-      // TODO
+    Git.prototype._parseBranch = function (b) {
+        var branches = b.trim().split('\n');
+        var current = '';
+        var branch;
+        var whitespace = /\s+/;
+
+        for (var i = 0; i < branches.length; i++) {
+            current = branches[i];
+
+            if (current.charAt(0) === '*') {
+                branch = current.split(whitespace)[1];
+            }
+
+        }
+
+        if (!branch) {
+            branch = b.trim();
+        }
+
         return branch
     };
 
