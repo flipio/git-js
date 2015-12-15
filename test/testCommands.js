@@ -458,6 +458,40 @@ exports.status = {
     }
 };
 
+exports.branch = {
+    setUp: function (done) {
+        Instance();
+        done();
+    },
+
+    'get current branch': function (test) {
+
+        git.branch(function (err, branch) {
+            test.done();
+        });
+
+        closeWith('master')
+    }
+
+};
+
+exports.getAllBranches = {
+    setUp: function (done) {
+        Instance();
+        done();
+    },
+
+    'get all branches': function (test) {
+
+        git.getAllBranches(function (err, branches) {
+            test.done();
+        });
+
+        closeWith('master')
+    }
+
+};
+
 exports.subModule = {
     setUp: function (done) {
         Instance();
