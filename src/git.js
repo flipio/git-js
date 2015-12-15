@@ -103,7 +103,7 @@
      * @returns {Git}
      */
     Git.prototype.branch = function (then) {
-        return this._run(['branch', ''], function (err, data) {
+        return this._run(['branch'], function (err, data) {
             then && then(err, !err && this._parseBranch(data));
         });
     };
@@ -115,7 +115,7 @@
      * @returns {Git}
      */
     Git.prototype.getAllBranches = function (then) {
-        return this._run(['branch', '--all'], function (err, data) {
+        return this._run(['branch', '-a'], function (err, data) {
             console.log('data', data);
             then && then(err, !err && this._parseBranch(data));
         });
